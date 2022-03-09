@@ -7,12 +7,11 @@ function computerPlay() {
 
 function playRound(computerSelection, userSelection) {
     let cleanUserSelection = userSelection.toLowerCase();
-    let winningMessage = 'You won';
-    let losingMessage = 'You lost';
+    let winningMessage = 'You won :)';
+    let losingMessage = 'You lost ^^';
 
     if (computerSelection === userSelection) {
-        console.log('Play again');
-        return 0;
+        console.log('Equalty - Play again');
     }
     else if (computerSelection === 'rock' && userSelection === 'scissor') {
         return (`${losingMessage} rock beats scissor`);
@@ -34,5 +33,6 @@ function playRound(computerSelection, userSelection) {
     }
 }
 
-const playerChoice = 'rock';
+const playerChoice = prompt('Write down your choice : ');
 const computerChoice = computerPlay();
+console.log(playRound(computerChoice, playerChoice));
