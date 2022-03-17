@@ -10,48 +10,61 @@ function playRound(computerSelection, userSelection) {
     let winningMessage = 'You won :)';
     let losingMessage = 'You lost ^^';
     
-    if (computerSelection === 'rock' && userSelection === 'scissors') {
+    if (computerSelection === 'rock' && userSelection === 'scissors')
+    {
         console.log(`   ${losingMessage} ${computerSelection} beats ${userSelection}`);
         return 0;
     }
-    else if (computerSelection === 'rock' && userSelection === 'paper') {
+    else if (computerSelection === 'rock' && userSelection === 'paper')
+    {
         console.log(`   ${winningMessage} ${userSelection} beats ${computerSelection}`);
         return 1;
     }
-    else if (computerSelection === 'paper' && userSelection === 'rock') {
+    else if (computerSelection === 'paper' && userSelection === 'rock')
+    {
         console.log(`   ${losingMessage} ${computerSelection} beats ${userSelection}`);
         return 0;
     }
-    else if (computerSelection === 'paper' && userSelection === 'scissors') {
+    else if (computerSelection === 'paper' && userSelection === 'scissors')
+    {
         console.log(`   ${winningMessage} ${userSelection} beats ${computerSelection}`);
         return 1;
     }
-    else if (computerSelection === 'scissors' && userSelection === 'paper') {
+    else if (computerSelection === 'scissors' && userSelection === 'paper')
+    {
         console.log(`   ${losingMessage} ${computerSelection} beats ${userSelection}`);
         return 0;
     }
-    else if (computerSelection === 'scissors' && userSelection === 'rock') {
+    else if (computerSelection === 'scissors' && userSelection === 'rock')
+    {
         console.log(`   ${winningMessage} ${userSelection} beats ${computerSelection}`);
         return 1;
     }
-    else {
+    else
+    {
         console.log("   It's a tie !");
         return (-1);
     }
 }
 
-function checkWinner(scoreA, scoreB) {
-    if (scoreA < scoreB) {
+function checkWinner(scoreA, scoreB)
+{
+    if (scoreA < scoreB)
+    {
         return 'Human wins !'
-    } else if (scoreB < scoreA) {
+    }
+    else if (scoreB < scoreA)
+    {
         return 'Computer beats human !'
-    } else {
+    }
+    else
+    {
         return "No one wins --> Replay";
     }
 }
 
-function game() {
-    
+function game()
+{
     let round = 1;
     let pScore = 0; // user score
     let cScore = 0; // computer score
@@ -95,7 +108,8 @@ function game() {
         round++;
     }
     return 0;
-    // checkWinner(cScore, pScore);
+    // checkWinner(cScore, pScore); this function is here if we want to include the ties in the rounds count,
+    // which can lead to an equalty or to a victory with just one or two rounds won.
     // console.log(winner);
 }
 
