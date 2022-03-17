@@ -1,0 +1,26 @@
+    // userPlay();
+        // computerPlay();
+        // console.log(`Computer played ${computerPlay()}`);
+
+// let singleRoundScore = playRound(); // return value of PlayRound function (if 1, user won, if 0, computer won)
+    
+
+    // let cScore = 0; // computer score
+    // let pScore = 0; // user score
+
+// if (singleRoundScore == 0)
+        // {
+        //     cScore++;
+        //     console.log(cScore);
+        // }
+        // else if (singleRoundScore == 1)
+        // {
+        //     pScore++;
+        //     console.log(pScore);
+        // }
+
+            // userPlay();
+        // computerPlay();
+        // console.log(`Computer played ${computerPlay()}`);
+
+            // checkwinner(cScore, pScore);
