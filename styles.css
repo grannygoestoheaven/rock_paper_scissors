@@ -1,0 +1,61 @@
+html {
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #CCC;
+    align-items: center;
+    justify-content: center;
+}
+
+.choices {
+    display : flex;
+    justify-content: center;
+    margin: 8px;
+}
+
+.choice {
+    border: 4px solid black;
+    cursor : pointer;
+    font-size: 2rem;
+    margin : 8px;
+    background-color: lightgrey;
+    color: grey;
+    transition: 150ms;
+}
+
+.choice:hover {
+    transform: scale(1.1);
+    background-color: orange;
+    /* color: forestgreen;
+    color: red; */
+    color: black;
+}
+
+.results {
+    display : flex;
+    justify-content: center;
+    /* border : 8px; */
+}
+
+.results .human{
+    /* background-color: red; */
+    padding: 2px;
+}
+
+.results .computer{
+    /* background-color: red; */
+    padding: 2px;
+}
+
+.result-score {
+    /* display: flex; */
+    align-items: center;
+    margin : 2px;
+}

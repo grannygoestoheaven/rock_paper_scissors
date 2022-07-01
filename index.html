@@ -4,11 +4,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <stylesheets src="styles.css"></stylesheets>
-    <script src="javascript.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <script src="javascript.js" defer></script>
     <title>Rock Paper Scissors by GGtH</title>
 </head>
 <body>
-    
+    <div class="choices">
+        <button class="choice" data-name="rock">Rock</button>
+        <button class="choice" data-name="paper">Paper</button>
+        <button class="choice" data-name="scissors">Scissors</button>
+    </div>
+    <div class="results">
+        <div class="human">
+            Human
+            <span class="result-score">0</span>
+        </div> 
+        <div class="computer">
+            Computer
+            <span class="result-score ">0</span>
+        </div> 
+    </div>
 </body>
 </html>

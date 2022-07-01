@@ -1,5 +1,5 @@
 function computerPlay() {
-    
+
     let items = ['rock', 'paper', 'scissors'];
     let choice = items[Math.floor(Math.random() * items.length)];
     return choice;
@@ -8,7 +8,7 @@ function computerPlay() {
 function playRound(computerSelection, userSelection) {
     
     let winningMessage = 'You won :)';
-    let losingMessage = 'You lost ^^';
+    let losingMessage = 'You lost mazza fackaaa ^^';
     
     if (computerSelection === 'rock' && userSelection === 'scissors')
     {
@@ -47,13 +47,14 @@ function playRound(computerSelection, userSelection) {
     }
 }
 
-function checkWinner(scoreA, scoreB)
+function checkWinner(cScore, pScore) /* function to use if we want to include the ties in the rounds count,
+                                        which can lead to an equalty, or to a victory with just one or two rounds won. */
 {
-    if (scoreA < scoreB)
+    if (cScore < pScore)
     {
         return 'Human wins !'
     }
-    else if (scoreB < scoreA)
+    else if (pScore < cScore)
     {
         return 'Computer beats human !'
     }
@@ -68,15 +69,29 @@ function game()
     let round = 1;
     let pScore = 0; // user score
     let cScore = 0; // computer score
-    while (round <= 5)
+    while (round < 5)
     {
-        const userChoice = prompt("Choose between Rock, Paper and Scissors :");
+        let userChoice = prompt("Choose between Rock, Paper and Scissors :");
+        // const userChoice = document.querySelectorAll('[data-name]');
+        // userChoice.forEach(element => {
+        //     element.addEventListener('click', e => {
+        //         console.log(element.dataset.name);
+                // userChoiceName = e.element.dataset.name;
+        //     })
+        // });
+        if (userChoice === null) {
+                return 0;
+        };
+        // userChoice.toLowerCase();
+        while (userChoice !== 'rock' && userChoice !=='paper' && userChoice!== 'scissors') {
+            alert('Enter valid choice');
+            userChoice = prompt("Choose between Rock, Paper and Scissors :");
+        }
         const computerChoice = computerPlay();
         console.log(`User chose ${userChoice}`);
         console.log(`Computer chose ${computerChoice}`);
 
         let singleRoundScore = playRound(computerChoice, userChoice);
-        
         // if (playRound(computerChoice, userChoice) === 1)
         if (singleRoundScore === 1)
         {
@@ -98,19 +113,38 @@ function game()
         if (pScore === 3)
         {
             console.log("Human wins !");
-            return;
+            return 1;
         }
         else if (cScore === 3)
         {
             console.log("Computer wins !");
-            return;
+            return 0;
         }
         round++;
     }
+    // checkWinner(cScore, pScore);
     return 0;
-    // checkWinner(cScore, pScore); this function is here if we want to include the ties in the rounds count,
-    // which can lead to an equalty or to a victory with just one or two rounds won.
+
     // console.log(winner);
 }
 
-console.log(game());
+function main() {
+    let startGame = prompt('Play Game ? Y/N');
+        if (startGame === 'Y') {
+            let gameCount = 1;
+            while (gameCount <= 3){
+                game();
+                // if (game === 0){
+                //     let playerVicory;
+                //     let computerVictory;
+                // }
+                gameCount++;
+                startGame = prompt("Play again ? Y/N");
+                if(startGame !== 'Y')
+                    return 0;
+            };
+        }
+        return 0;
+    }
+    main();
+
