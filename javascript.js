@@ -1,3 +1,10 @@
+function replay() {
+    let userDecision = prompt("Play Again ? Y/N");
+    if (userDecision === "Y")
+        game();
+    return;
+}
+
 function computerPlay() {
 
     let items = ['rock', 'paper', 'scissors'];
@@ -131,6 +138,7 @@ function game()
 }
 
 game();
+replay();
 
 // let startGame = prompt('Play Game ? Y/N');
 // if (startGame === 'Y') {
