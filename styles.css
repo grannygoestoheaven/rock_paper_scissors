@@ -21,7 +21,7 @@ body {
 }
 
 .choice {
-    border: 4px solid black;
+    border: 3px solid black;
     cursor : pointer;
     font-size: 2rem;
     margin : 8px;
