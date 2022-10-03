@@ -34,7 +34,7 @@ function playRound(computerSelection, userSelection) {
     }
     else if (computerSelection === 'paper' && userSelection === 'scissors')
     {
-        console.log(`   ${winningMessage} ${userSelection} beats ${computerSelection}`);
+        console.log(`   ${winningMessage} ${userSelection} beat ${computerSelection}`);
         return 1;
     }
     else if (computerSelection === 'scissors' && userSelection === 'paper')

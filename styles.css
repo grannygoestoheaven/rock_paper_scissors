@@ -23,7 +23,7 @@ body {
 .choice {
     border: 3px solid black;
     cursor : pointer;
-    font-size: 2rem;
+    font-size: 4rem;
     margin : 8px;
     background-color: lightgrey;
     color: grey;
