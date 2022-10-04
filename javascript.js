@@ -5,7 +5,7 @@ function playAndReplay() {
         let userDecision = prompt("Play Rock Paper Scissors ? Y/N");
         if(userDecision === "N" || userDecision === "n" || userDecision === null)
             return;
-        while((userDecision !== "Y" && userDecision !== "y") && (userDecision !== "N" && userDecision !== "n") && (userDecision !== true))
+        while(userDecision !== "Y" && userDecision !== "y")
             userDecision = prompt("Play Rock Paper Scissors ? Y/N");
         game();
         gameCount ++;
@@ -16,7 +16,7 @@ function playAndReplay() {
         // while(userDecision !== "Y" && userDecision !== "y")
         if(userDecision === "N" || userDecision === "n" || userDecision === null)
             return;
-        while((userDecision !== "Y" && userDecision !== "y") && (userDecision !== "N" && userDecision !== "n") && (userDecision !== true))
+        while(userDecision !== "Y" && userDecision !== "y")
             userDecision = prompt("Play again Y/N");
         game();
     }
