@@ -16,7 +16,7 @@ function playAndReplay() {
         // while(userDecision !== "Y" && userDecision !== "y")
         if(userDecision === "N" || userDecision === "n" || userDecision === null)
             return;
-        while(userDecision !== "Y" && userDecision !== "y")
+        while(userDecision !== "Y" && userDecision !== "y" && userDecision !== "n" && userDecision !== "N")
             userDecision = prompt("Play again Y/N");
         game();
     }
