@@ -1,7 +1,32 @@
-function computerPlay() {
 
+function playAndReplay() {
+    let gameCount = 0;
+    while(gameCount === 0) {
+        let userDecision = prompt("Play Rock Paper Scissors ? Y/N");
+        if(userDecision === "N" || userDecision === "n" || userDecision === null)
+            return;
+        while(userDecision !== "Y" && userDecision !== "y")
+            userDecision = prompt("Play Rock Paper Scissors ? Y/N");
+        game();
+        gameCount ++;
+    }
+    while(gameCount > 0) {
+        let userDecision = prompt("Play again ? Y/N");
+        // if (userDecision === "Y" || userDecision === "y")
+        // while(userDecision !== "Y" && userDecision !== "y")
+        if(userDecision === "N" || userDecision === "n" || userDecision === null)
+            return;
+        while(userDecision !== "Y" && userDecision !== "y" && userDecision !== "n" && userDecision !== "N")
+            userDecision = prompt("Play again Y/N");
+        game();
+    }
+    return;
+}
+
+function computerPlay() {
     let items = ['rock', 'paper', 'scissors'];
     let choice = items[Math.floor(Math.random() * items.length)];
+    // let choice = 'rock';
     return choice;
 }
 
@@ -27,7 +52,7 @@ function playRound(computerSelection, userSelection) {
     }
     else if (computerSelection === 'paper' && userSelection === 'scissors')
     {
-        console.log(`   ${winningMessage} ${userSelection} beats ${computerSelection}`);
+        console.log(`   ${winningMessage} ${userSelection} beat ${computerSelection}`);
         return 1;
     }
     else if (computerSelection === 'scissors' && userSelection === 'paper')
@@ -66,20 +91,21 @@ function checkWinner(cScore, pScore) /* function to use if we want to include th
 
 function game()
 {
-    let round = 1;
+    let move = 1;
     let pScore = 0; // user score
     let cScore = 0; // computer score
-    while (round < 5)
+    while (move)
     {
-        const userPlay = prompt("Choose between Rock, Paper and Scissors :");
+        let userPlay = prompt("Choose between Rock, Paper and Scissors :");
         if (userPlay === null) {
                 return 0;
         };
-        // // userChoice.toLowerCase();
-        // while (userChoice !== 'rock' && userChoice !=='paper' && userChoice!== 'scissors') {
-        //     alert('Enter valid choice');
-        //     userChoice = prompt("Choose between Rock, Paper and Scissors :");
-        // }
+        userPlay = userPlay.toLowerCase();
+        while (userPlay !== 'rock' && userPlay !=='paper' && userPlay!== 'scissors') {
+            alert('Enter valid choice');
+            userPlay = prompt("Choose between Rock, Paper and Scissors :");
+            userPlay = userPlay.toLowerCase();
+        }
         // const userPossibleChoices = document.querySelectorAll('[data-name]');
         // const userPlay = '';
         // userPossibleChoices.forEach((element) => {
@@ -112,17 +138,18 @@ function game()
         {
             continue;
         }
-        if (pScore === 3)
+        if (pScore === 1)
         {
             console.log("Human wins !");
+            move++;
             return 1;
         }
-        else if (cScore === 3)
+        else if (cScore === 1)
         {
             console.log("Computer wins !");
+            move++;
             return 0;
         }
-        round++;
     }
     // checkWinner(cScore, pScore);
     return 0;
@@ -130,7 +157,10 @@ function game()
     // console.log(winner);
 }
 
-game();
+playAndReplay();
+
+// game();
+// replay();
 
 // let startGame = prompt('Play Game ? Y/N');
 // if (startGame === 'Y') {
