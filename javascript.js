@@ -1,4 +1,3 @@
-
 function playAndReplay() {
     let gameCount = 0;
     while(gameCount === 0) {
@@ -7,11 +6,13 @@ function playAndReplay() {
             return;
         while(userDecision !== "Y" && userDecision !== "y")
             userDecision = prompt("Play Rock Paper Scissors ? Y/N");
+        if(userDecision === "N" || userDecision === "n" || userDecision === null)
+            return;
         game();
         gameCount ++;
     }
     while(gameCount > 0) {
-        let userDecision = prompt("Play again ? Y/N");
+        let userDecision = prompt("Play again hey ? Y/N");
         // if (userDecision === "Y" || userDecision === "y")
         // while(userDecision !== "Y" && userDecision !== "y")
         if(userDecision === "N" || userDecision === "n" || userDecision === null)
@@ -158,23 +159,3 @@ function game()
 }
 
 playAndReplay();
-
-// game();
-// replay();
-
-// let startGame = prompt('Play Game ? Y/N');
-// if (startGame === 'Y') {
-//     let gameCount = 1;
-//     while (gameCount <= 3) {
-//                 game();
-//                 // if (game === 0){
-//                 //     let playerVicory;
-//                 //     let computerVictory;
-//                 // }
-//                 gameCount++;
-//                 startGame = prompt("Play again ? Y/N");
-//                 if(startGame !== 'Y') {
-//                     gameCount === 4;
-//                 }
-//             };
-//         }
