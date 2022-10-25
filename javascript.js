@@ -96,7 +96,7 @@ function game()
     let move = 1;
     let pScore = 0; // user score
     let cScore = 0; // computer score
-    const SCOREMAX = 1;
+    const SCOREMAX = 3;
     while (move < 6)
     {
         let userPlay = prompt("Enter Rock, Paper or Scissors :");
