@@ -1,61 +1,32 @@
 html {
     height: 100%;
     width: 100%;
-    justify-content: center;
-    align-items: center;
 }
 
 body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color: #CCC;
+    background-color: rgb(235, 230, 208);
     align-items: center;
-    justify-content: center;
+    justify-content: bottom;
 }
 
-.choices {
-    display : flex;
-    justify-content: center;
-    margin: 8px;
+.container {
+
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-display: center;
+    text-align: center;
 }
 
-.choice {
-    border: 3px solid black;
-    cursor : pointer;
-    font-size: 2rem;
-    margin : 8px;
-    background-color: lightgrey;
-    color: grey;
-    transition: 150ms;
+h1 {
+    /* margin-top: 500px; */
+    margin-bottom: 0px;
 }
-
-.choice:hover {
-    transform: scale(1.1);
-    background-color: orange;
-    /* color: forestgreen;
-    color: red; */
-    color: black;
+h2 {
+    margin-bottom: 0px;
 }
-
-.results {
-    display : flex;
-    justify-content: center;
-    /* border : 8px; */
+p {
+    margin-top: 0px;
 }
-
-.results .human{
-    /* background-color: red; */
-    padding: 2px;
-}
-
-.results .computer{
-    /* background-color: red; */
-    padding: 2px;
-}
-
-.result-score {
-    /* display: flex; */
-    align-items: center;
-    margin : 2px;
-}
+    
