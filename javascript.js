@@ -1,24 +1,27 @@
+function firstPlay()
+{
+    let userDecision = prompt("Play game of RPS ? Y/N");
+    while(userDecision !== "n" && userDecision !== "N" && userDecision !== "y" && userDecision !== "Y" && userDecision !== null && userDecision !== "")
+        userDecision = prompt("Play game of RPS ? Y/N");
+    if (userDecision === "N" || userDecision === "n" || userDecision === null)
+        return 0;
+    let exit = game();
+    if(exit === -1)
+        return (exit);
+}
 
-function playAndReplay() {
-    let gameCount = 0;
-    while(gameCount === 0) {
-        let userDecision = prompt("Play Rock Paper Scissors ? Y/N");
-        if(userDecision === "N" || userDecision === "n" || userDecision === null)
-            return;
-        while(userDecision !== "Y" && userDecision !== "y")
-            userDecision = prompt("Play Rock Paper Scissors ? Y/N");
-        game();
-        gameCount ++;
-    }
-    while(gameCount > 0) {
+function replay() {
+    let gameCount = 1;
+    while(gameCount)
+    {
         let userDecision = prompt("Play again ? Y/N");
-        // if (userDecision === "Y" || userDecision === "y")
-        // while(userDecision !== "Y" && userDecision !== "y")
+        while(userDecision !== "Y" && userDecision !== "y" && userDecision !== "n" && userDecision !== "N" && userDecision !== null && userDecision !== "")
+            userDecision = prompt("Play again ? Y/N");
         if(userDecision === "N" || userDecision === "n" || userDecision === null)
             return;
-        while(userDecision !== "Y" && userDecision !== "y" && userDecision !== "n" && userDecision !== "N")
-            userDecision = prompt("Play again Y/N");
-        game();
+        let exit = game();
+        if(exit === -1)
+            return (exit);
     }
     return;
 }
@@ -26,14 +29,13 @@ function playAndReplay() {
 function computerPlay() {
     let items = ['rock', 'paper', 'scissors'];
     let choice = items[Math.floor(Math.random() * items.length)];
-    // let choice = 'rock';
     return choice;
 }
 
 function playRound(computerSelection, userSelection) {
     
     let winningMessage = 'You won :)';
-    let losingMessage = 'You lost mazza fackaaa ^^';
+    let losingMessage = 'You lost ^^';
     
     if (computerSelection === 'rock' && userSelection === 'scissors')
     {
@@ -94,28 +96,21 @@ function game()
     let move = 1;
     let pScore = 0; // user score
     let cScore = 0; // computer score
-    while (move)
+    const SCOREMAX = 1;
+    while (move < 6)
     {
-        let userPlay = prompt("Choose between Rock, Paper and Scissors :");
-        if (userPlay === null) {
-                return 0;
-        };
+        let userPlay = prompt("Enter Rock, Paper or Scissors :");
+        if (userPlay === null) 
+            return -1;  
         userPlay = userPlay.toLowerCase();
-        while (userPlay !== 'rock' && userPlay !=='paper' && userPlay!== 'scissors') {
-            alert('Enter valid choice');
-            userPlay = prompt("Choose between Rock, Paper and Scissors :");
+        while (userPlay !== 'rock' && userPlay !=='paper' && userPlay!== 'scissors')
+        {
+            alert('Enter valid choice bro');
+            userPlay = prompt("Enter Rock, Paper or Scissors :");
+            if (userPlay === null) 
+                return -1;
             userPlay = userPlay.toLowerCase();
         }
-        // const userPossibleChoices = document.querySelectorAll('[data-name]');
-        // const userPlay = '';
-        // userPossibleChoices.forEach((element) => {
-        //     element.addEventListener('click', e => {
-        //         if (element.dataset.name !== null) {
-        //             userPlay = element.dataset.name;
-        //         }
-        //     })
-        // });
-
         const computerChoice = computerPlay();
         console.log(`User chose ${userPlay}`);
         console.log(`Computer chose ${computerChoice}`);
@@ -127,7 +122,6 @@ function game()
             console.log(`       Player score ${pScore}`);
             console.log(`       Computer score ${cScore}`);
         }
-        // else if (playRound(computerChoice, userChoice) === 0)
         else if (singleRoundScore === 0)
         {
             cScore++;
@@ -138,43 +132,38 @@ function game()
         {
             continue;
         }
-        if (pScore === 1)
+        if (pScore === SCOREMAX)
         {
             console.log("Human wins !");
             move++;
             return 1;
         }
-        else if (cScore === 1)
+        else if (cScore === SCOREMAX)
         {
             console.log("Computer wins !");
             move++;
-            return 0;
+            return 1;
         }
+        // move++;
     }
-    // checkWinner(cScore, pScore);
-    return 0;
-
-    // console.log(winner);
 }
 
-playAndReplay();
+function rockPaperScissors()
+{
+    let exit = firstPlay()
+    if (exit === 0)
+        return;
+    if (exit === -1)
+    {
+        console.log("game aborted");
+        return;
+    }
+    let exitBis = replay();
+    if (exitBis === -1)
+    {
+        console.log("game aborted");
+        return;
+    }
+}
 
-// game();
-// replay();
-
-// let startGame = prompt('Play Game ? Y/N');
-// if (startGame === 'Y') {
-//     let gameCount = 1;
-//     while (gameCount <= 3) {
-//                 game();
-//                 // if (game === 0){
-//                 //     let playerVicory;
-//                 //     let computerVictory;
-//                 // }
-//                 gameCount++;
-//                 startGame = prompt("Play again ? Y/N");
-//                 if(startGame !== 'Y') {
-//                     gameCount === 4;
-//                 }
-//             };
-//         }
+rockPaperScissors();
