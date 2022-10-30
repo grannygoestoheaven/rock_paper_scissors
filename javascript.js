@@ -93,98 +93,157 @@ function checkWinner(cScore, pScore) /* function to use if we want to include th
     }
 }
 
-// function checkWinnerBis
+// const playerScore = document.querySelector('.humanScore');
+// const computerScore = document.querySelector('.computerScore');
+// const winnerName = document.querySelector('.winnerName');
 
-const playerScore = document.querySelector('.humanScore');
-const computerScore = document.querySelector('.computerScore');
-const winnerName = document.querySelector('.winnerName');
-
-let userPossibleChoices;
-let userChoice;
+// let userPossibleChoices;
+// let userChoice;
 let computerChoice;
 let singleRoundScore;
 
 function game()
 {
-    let move = 1;
-    let pScore = 0; // user score
-    let cScore = 0; // computer score
-    const SCOREMAX = 3;
-    // userPossibleChoices = document.querySelectorAll('.choice'); // --> returns the nodelist ["rock", "paper", "scissors"]
-    // console.log(userPossibleChoices);
-
-    //Typing version with prompt command
-
-    while(move)
-    {
-        playerScore.textContent = `${pScore}`;
-        computerScore.textContent = `${cScore}`;
-        winnerName.textContent = "";
-
-        let userChoice = prompt("Enter Rock, Paper or Scissors :");
-        if (userChoice === null) 
-            return -1;  
-        userChoice = userChoice.toLowerCase();
-        while (userChoice !== 'rock' && userChoice !=='paper' && userChoice!== 'scissors')
-        {
-            alert('Enter valid choice bro');
-            userChoice = prompt("Enter Rock, Paper or Scissors :");
-            if (userChoice === null) 
-            return -1;
-            userChoice = userChoice.toLowerCase();
-        }
-        let computerChoice = computerPlay();
-
-        singleRoundScore = playRound(computerChoice, userChoice);
+    // let move = 1;
+    // let pScore = 0; // user score
+    // let cScore = 0; // computer score
+    // const SCOREMAX = 3;
     
-        if (singleRoundScore === 1)
-        {
-            pScore++;
-            playerScore.textContent = `${pScore}`;
-            console.log(`       Player score ${pScore}`);
-            console.log(`       Computer score ${cScore}`);
-        }
-        else if (singleRoundScore === 0)
-        {
-            cScore++;
-            computerScore.textContent = `${cScore}`
-            console.log(`       Player score ${pScore}`);
-            console.log(`       Computer score ${cScore}`);
-        }
-        if (pScore === SCOREMAX)
-        {
-            winnerName.textContent = "Player";
-            console.log("Human wins !");
-            return 1;
-        }
-        else if (cScore === SCOREMAX)
-        {
-            winnerName.textContent = "Computer";
-            console.log("Computer wins !");
-            return 1;
-        }
-    }
-   
-    // User Interface version
-    // userPossibleChoices.forEach(element => // I use a forEach method to loop over the elements of the nodelist ["rock", "paper", "scissors"]
+    // while(move <= SCOREMAX)
     // {
+    //     //Typing version with prompt command
+
+    //     // let userChoice = prompt("Enter Rock, Paper or Scissors :");
+    //     // if (userChoice === null) 
+    //     //     return -1;  
+    //     // userChoice = userChoice.toLowerCase();
+    //     // while (userChoice !== 'rock' && userChoice !=='paper' && userChoice!== 'scissors')
+    //     // {
+    //     //     alert('Enter valid choice bro');
+    //     //     userChoice = prompt("Enter Rock, Paper or Scissors :");
+    //     //     if (userChoice === null) 
+    //     //     return -1;
+    //     //     userChoice = userChoice.toLowerCase();
+    //     // }
+
+        
     //     playerScore.textContent = `${pScore}`;
     //     computerScore.textContent = `${cScore}`;
     //     winnerName.textContent = "";
-
-    //     element.addEventListener('click', () => // instructions to execute for every single element of the nodelist
+        
+    //     const userPossibleChoices = document.querySelectorAll('.choice'); // --> returns the nodelist ["rock", "paper", "scissors"]
+        
+    //     console.log(userPossibleChoices);
+    //     console.log(playerScore, computerScore, winnerName);
+        
+    //     userPossibleChoices.forEach(element => // I use a forEach method to loop over the elements of the "userPossibleChoices" nodelist ["rock", "paper", "scissors"]
     //     {
-    //         // userChoice = e.target.dataset.name; // works too ^^
-    //         userChoice = element.textContent.toLowerCase(); // I assign the textContent of a single element to my variable userChoice
-    //         if (userChoice === null)
-    //             return -1;
-    //         computerChoice = computerPlay(); // I assign the random choice of the computer to my variable computerChoice
-    //         console.log(`player chose ${userChoice}, computer chose ${computerChoice}`);
+    //         element.addEventListener('click', () => // instructions to execute for every single element of the nodelist
+    //         {
+    //             // userChoice = e.target.dataset.name; // works too ^^
+    //             const userChoice = element.textContent.toLowerCase(); // I assign the textContent of a single element to my variable userChoice
+    //             if (userChoice === null)
+    //                 return -1;
+    //             const computerChoice = computerPlay(); // I assign the random choice of the computer to my variable computerChoice
+    //             console.log(`player chose ${userChoice}, computer chose ${computerChoice}`);
+    //             singleRoundScore = playRound(computerChoice, userChoice);
+    //             console.log(singleRoundScore);
+            
+    //             if (singleRoundScore === 1)
+    //             {
+    //                 pScore++;
+    //                 playerScore.textContent = `${pScore}`;
+    //                 console.log(`       Player score ${pScore}`);
+    //                 console.log(`       Computer score ${cScore}`);
+    //             }
+    //             else if (singleRoundScore === 0)
+    //             {
+    //                 cScore++;
+    //                 computerScore.textContent = `${cScore}`
+    //                 console.log(`       Player score ${pScore}`);
+    //                 console.log(`       Computer score ${cScore}`);
+    //             }
+    
+    //             if (pScore === SCOREMAX)
+    //             {
+    //                 winnerName.textContent = "Player";
+    //                 console.log("Human wins !");
+    //                 return 1;
+    //             }
+    //             else if (cScore === SCOREMAX)
+    //             {
+    //                 winnerName.textContent = "Computer";
+    //                 console.log("Computer wins !");
+    //                 return 1;
+    //             }
+    //         })
+    //     });
+    //     console.log("on en est là");
+    //     move++;
+    // }
+    const playerScore = document.querySelector('.humanScore');
+    const computerScore = document.querySelector('.computerScore');
+    const winnerName = document.querySelector('.winnerName');
 
-    //     })
-    // });
-        // console.log(`User chose ${userPlay}`);
-        // console.log(`Computer chose ${computerChoice}`);
+    const userPossibleChoices = document.querySelectorAll('button');
+    console.log(userPossibleChoices)
+    let userChoice;
+    let computerChoice;
+    let singleRoundScore;
+    let pScore = 0;
+    let cScore = 0;
+    const SCOREMAX = 3;
+
+    userPossibleChoices.forEach(element =>
+    {
+        element.addEventListener('click', e =>
+        {
+            userChoice = e.target.dataset.name;
+            computerChoice = computerPlay();
+            console.log(`player chose ${userChoice}, computer chose ${computerChoice}`);
+            singleRoundScore = playRound(computerChoice, userChoice);
+            console.log(singleRoundScore);
+
+            if (singleRoundScore === 1)
+            {
+                pScore++;
+                playerScore.textContent = `${pScore}`;
+                console.log(`       Player score ${pScore}`);
+                console.log(`       Computer score ${cScore}`);
+            }
+            else if (singleRoundScore === 0)
+            {
+                cScore++;
+                computerScore.textContent = `${cScore}`
+                console.log(`       Player score ${pScore}`);
+                console.log(`       Computer score ${cScore}`);
+            }
+            
+            if (pScore === SCOREMAX)
+            {
+                winnerName.textContent = "Player";
+                console.log("Human wins !");
+                pScore = 0;
+                cScore = 0;
+                playerScore.textContent = `${pScore}`;
+                computerScore.textContent = `${cScore}`
+                return 1;
+            }
+            else if (cScore === SCOREMAX)
+            {
+                winnerName.textContent = "Computer";
+                console.log("Computer wins !");
+                pScore = 0;
+                cScore = 0;
+                playerScore.textContent = `${pScore}`;
+                computerScore.textContent = `${cScore}`
+                return 1;
+            }
+        });
+
+        // console.log(element.dataset.name);
+        // console.log(userPossibleChoices);
+    })
 }
 
 function rockPaperScissors()
@@ -203,8 +262,8 @@ function rockPaperScissors()
         console.log("game aborted");
         return;
     }
-    return;
+    // return;
 }
 
-rockPaperScissors();
-// game();
+// rockPaperScissors();
+game();
