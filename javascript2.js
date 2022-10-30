@@ -11,7 +11,7 @@
 
 const userPossibleChoices = document.querySelectorAll('[data-name]');
 
-console.log(userPossibleChoices);
+// console.log(userPossibleChoices);
 
 // userPossibleChoices.forEach((element) => {
 //     element.addEventListener('click', e => {
@@ -22,9 +22,9 @@ console.log(userPossibleChoices);
 //     })
 // });
 
-let userPlay = userPossibleChoices[1];
-console.log(userPlay);
-console.log(userPlay.dataset.name);
+// let userPlay = userPossibleChoices[1];
+// console.log(userPlay);
+// console.log(userPlay.dataset.name);
 
 /* Je veux retourner le mot 'rock' 'paper' ou 'scissors' et le stocker dans ma variable userPlay.
 De cette manière je pourrai le passer en paramètre de ma fonction playRound.
