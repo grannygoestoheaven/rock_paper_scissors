@@ -1,49 +1,10 @@
-function rockPaperScissors()
-{
-    let exit = firstPlay();
-    if (exit === 0)
-        return;
-    if (exit === -1)
-    {
-        console.log("game aborted");
-        return;
-    }
-    let exitBis = replay();
-    if (exitBis === -1)
-    {
-        console.log("game aborted");
-        return;
-    }
-    return;
-}
-
-function firstPlay()
-{
-    let userDecision = prompt("Play game of RPS ? Y/N");
-    while(userDecision !== "n" && userDecision !== "N" && userDecision !== "y" && userDecision !== "Y" && userDecision !== null && userDecision !== "")
-        userDecision = prompt("Play game of RPS ? Y/N");
-    if (userDecision === "N" || userDecision === "n" || userDecision === null)
-        return 0;
-    let exit = game();
-    if(exit === -1)
-        return (-1);
-}
-
 function replay()
 {
-    let gameCount = 1;
-    while(gameCount)
-    {
-        let userDecision = prompt("Play game ? Y/N");
-        while(userDecision !== "Y" && userDecision !== "y" && userDecision !== "n" && userDecision !== "N" && userDecision !== null && userDecision !== "")
-            userDecision = prompt("Play game ?? Y/N");
-        if(userDecision === "N" || userDecision === "n" || userDecision === null)
-            return;
-        let exitBis = game();
-        if(exitBis === -1)
-            return (-1);
-    }
-    return;
+    let userDecision = prompt("Replay ? Y/N");
+    while(userDecision !== "Y" && userDecision !== "y" && userDecision !== "n" && userDecision !== "N" && userDecision !== null && userDecision !== "")
+        userDecision = prompt("Replay ? Y/N");
+    if(userDecision === "N" || userDecision === "n" || userDecision === null)
+        return;
 }
 
 function computerPlay()
@@ -113,7 +74,7 @@ function game()
     let singleRoundScore;
     let pScore = 0;
     let cScore = 0;
-    const SCOREMAX = 3;
+    const SCOREMAX = 1;
     console.log(pScore);
 
     userPossibleChoices.forEach(element =>
@@ -152,11 +113,12 @@ function game()
             {
                 winnerName.textContent = "Human";
                 console.log("Human wins !");
-                let userDecision = prompt("Replay ? Y/N");
-                while(userDecision !== "Y" && userDecision !== "y" && userDecision !== "n" && userDecision !== "N" && userDecision !== null && userDecision !== "")
-                    userDecision = prompt("Replay ? Y/N");
-                if(userDecision === "N" || userDecision === "n" || userDecision === null)
-                    return;
+                replay();
+                // let userDecision = prompt("Replay ? Y/N");
+                // while(userDecision !== "Y" && userDecision !== "y" && userDecision !== "n" && userDecision !== "N" && userDecision !== null && userDecision !== "")
+                //     userDecision = prompt("Replay ? Y/N");
+                // if(userDecision === "N" || userDecision === "n" || userDecision === null)
+                //     return;
                 pScore = 0;
                 cScore = 0;
                 winnerName.textContent = "";
@@ -168,11 +130,12 @@ function game()
             {
                 winnerName.textContent = "Computer";
                 console.log("Computer wins !");
-                let userDecision = prompt("Replay ? Y/N");
-                while(userDecision !== "Y" && userDecision !== "y" && userDecision !== "n" && userDecision !== "N" && userDecision !== null && userDecision !== "")
-                userDecision = prompt("Replay ? Y/N");
-                if(userDecision === "N" || userDecision === "n" || userDecision === null)
-                return;
+                replay();
+                // let userDecision = prompt("Replay ? Y/N");
+                // while(userDecision !== "Y" && userDecision !== "y" && userDecision !== "n" && userDecision !== "N" && userDecision !== null && userDecision !== "")
+                //     userDecision = prompt("Replay ? Y/N");
+                // if(userDecision === "N" || userDecision === "n" || userDecision === null)
+                //     return;
                 pScore = 0;
                 cScore = 0;
                 winnerName.textContent = "";
