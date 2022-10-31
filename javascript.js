@@ -1,3 +1,22 @@
+function rockPaperScissors()
+{
+    let exit = firstPlay();
+    if (exit === 0)
+        return;
+    if (exit === -1)
+    {
+        console.log("game aborted");
+        return;
+    }
+    let exitBis = replay();
+    if (exitBis === -1)
+    {
+        console.log("game aborted");
+        return;
+    }
+    return;
+}
+
 function firstPlay()
 {
     let userDecision = prompt("Play game of RPS ? Y/N");
@@ -7,22 +26,22 @@ function firstPlay()
         return 0;
     let exit = game();
     if(exit === -1)
-        return (exit);
+        return (-1);
 }
 
-function replay() {
+function replay()
+{
     let gameCount = 1;
     while(gameCount)
     {
         let userDecision = prompt("Play game ? Y/N");
         while(userDecision !== "Y" && userDecision !== "y" && userDecision !== "n" && userDecision !== "N" && userDecision !== null && userDecision !== "")
-            userDecision = prompt("Play game ? Y/N");
+            userDecision = prompt("Play game ?? Y/N");
         if(userDecision === "N" || userDecision === "n" || userDecision === null)
             return;
         let exitBis = game();
         if(exitBis === -1)
-            return (exitBis);
-        // game();
+            return (-1);
     }
     return;
 }
@@ -95,11 +114,14 @@ function game()
     let pScore = 0;
     let cScore = 0;
     const SCOREMAX = 3;
+    console.log(pScore);
 
     userPossibleChoices.forEach(element =>
     {
         element.addEventListener('click', e =>
         {
+            playerScore.textContent = `${pScore}`;
+            computerScore.textContent = `${cScore}`
             userChoice = e.target.dataset.name;
             computerChoice = computerPlay();
             console.log(`player chose ${userChoice}, computer chose ${computerChoice}`);
@@ -130,43 +152,35 @@ function game()
             {
                 winnerName.textContent = "Human";
                 console.log("Human wins !");
-                // pScore = 0;
-                // cScore = 0;
+                let userDecision = prompt("Replay ? Y/N");
+                while(userDecision !== "Y" && userDecision !== "y" && userDecision !== "n" && userDecision !== "N" && userDecision !== null && userDecision !== "")
+                    userDecision = prompt("Replay ? Y/N");
+                if(userDecision === "N" || userDecision === "n" || userDecision === null)
+                    return;
+                pScore = 0;
+                cScore = 0;
+                winnerName.textContent = "";
                 playerScore.textContent = `${pScore}`;
                 computerScore.textContent = `${cScore}`
-                return 1;
+                // game();
             }
             else if (cScore === SCOREMAX)
             {
                 winnerName.textContent = "Computer";
                 console.log("Computer wins !");
-                // pScore = 0;
-                // cScore = 0;
+                let userDecision = prompt("Replay ? Y/N");
+                while(userDecision !== "Y" && userDecision !== "y" && userDecision !== "n" && userDecision !== "N" && userDecision !== null && userDecision !== "")
+                userDecision = prompt("Replay ? Y/N");
+                if(userDecision === "N" || userDecision === "n" || userDecision === null)
+                return;
+                pScore = 0;
+                cScore = 0;
+                winnerName.textContent = "";
                 playerScore.textContent = `${pScore}`;
                 computerScore.textContent = `${cScore}`
-                return 1;
             }
         });
     })
-}
-
-function rockPaperScissors()
-{
-    let exit = firstPlay()
-    if (exit === 0)
-        return;
-    if (exit === -1)
-    {
-        console.log("game aborted");
-        return;
-    }
-    let exitBis = replay();
-    if (exitBis === -1)
-    {
-        console.log("game aborted");
-        return;
-    }
-    // return;
 }
 
 // rockPaperScissors();
