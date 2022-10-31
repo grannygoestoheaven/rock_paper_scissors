@@ -76,114 +76,16 @@ function playRound(computerSelection, userSelection) {
     }
 }
 
-function checkWinner(cScore, pScore) /* function to use if we want to include the ties in the rounds count,
-                                        which can lead to an equalty, or to a victory with just one or two rounds won. */
-{
-    if (cScore < pScore)
-    {
-        return 'Human wins !'
-    }
-    else if (pScore < cScore)
-    {
-        return 'Computer beats human !'
-    }
-    else
-    {
-        return "No one wins --> Replay";
-    }
-}
-
-// const playerScore = document.querySelector('.humanScore');
-// const computerScore = document.querySelector('.computerScore');
-// const winnerName = document.querySelector('.winnerName');
-
-// let userPossibleChoices;
-// let userChoice;
 let computerChoice;
 let singleRoundScore;
 
 function game()
 {
-    // let move = 1;
-    // let pScore = 0; // user score
-    // let cScore = 0; // computer score
-    // const SCOREMAX = 3;
-    
-    // while(move <= SCOREMAX)
-    // {
-    //     //Typing version with prompt command
-
-    //     // let userChoice = prompt("Enter Rock, Paper or Scissors :");
-    //     // if (userChoice === null) 
-    //     //     return -1;  
-    //     // userChoice = userChoice.toLowerCase();
-    //     // while (userChoice !== 'rock' && userChoice !=='paper' && userChoice!== 'scissors')
-    //     // {
-    //     //     alert('Enter valid choice bro');
-    //     //     userChoice = prompt("Enter Rock, Paper or Scissors :");
-    //     //     if (userChoice === null) 
-    //     //     return -1;
-    //     //     userChoice = userChoice.toLowerCase();
-    //     // }
-
-        
-    //     playerScore.textContent = `${pScore}`;
-    //     computerScore.textContent = `${cScore}`;
-    //     winnerName.textContent = "";
-        
-    //     const userPossibleChoices = document.querySelectorAll('.choice'); // --> returns the nodelist ["rock", "paper", "scissors"]
-        
-    //     console.log(userPossibleChoices);
-    //     console.log(playerScore, computerScore, winnerName);
-        
-    //     userPossibleChoices.forEach(element => // I use a forEach method to loop over the elements of the "userPossibleChoices" nodelist ["rock", "paper", "scissors"]
-    //     {
-    //         element.addEventListener('click', () => // instructions to execute for every single element of the nodelist
-    //         {
-    //             // userChoice = e.target.dataset.name; // works too ^^
-    //             const userChoice = element.textContent.toLowerCase(); // I assign the textContent of a single element to my variable userChoice
-    //             if (userChoice === null)
-    //                 return -1;
-    //             const computerChoice = computerPlay(); // I assign the random choice of the computer to my variable computerChoice
-    //             console.log(`player chose ${userChoice}, computer chose ${computerChoice}`);
-    //             singleRoundScore = playRound(computerChoice, userChoice);
-    //             console.log(singleRoundScore);
-            
-    //             if (singleRoundScore === 1)
-    //             {
-    //                 pScore++;
-    //                 playerScore.textContent = `${pScore}`;
-    //                 console.log(`       Player score ${pScore}`);
-    //                 console.log(`       Computer score ${cScore}`);
-    //             }
-    //             else if (singleRoundScore === 0)
-    //             {
-    //                 cScore++;
-    //                 computerScore.textContent = `${cScore}`
-    //                 console.log(`       Player score ${pScore}`);
-    //                 console.log(`       Computer score ${cScore}`);
-    //             }
-    
-    //             if (pScore === SCOREMAX)
-    //             {
-    //                 winnerName.textContent = "Player";
-    //                 console.log("Human wins !");
-    //                 return 1;
-    //             }
-    //             else if (cScore === SCOREMAX)
-    //             {
-    //                 winnerName.textContent = "Computer";
-    //                 console.log("Computer wins !");
-    //                 return 1;
-    //             }
-    //         })
-    //     });
-    //     console.log("on en est là");
-    //     move++;
-    // }
     const playerScore = document.querySelector('.humanScore');
     const computerScore = document.querySelector('.computerScore');
     const winnerName = document.querySelector('.winnerName');
+    const playerMove = document.querySelector('.humanMove');
+    const computerMove = document.querySelector('.computerMove');
 
     const userPossibleChoices = document.querySelectorAll('button');
     console.log(userPossibleChoices)
@@ -201,6 +103,11 @@ function game()
             userChoice = e.target.dataset.name;
             computerChoice = computerPlay();
             console.log(`player chose ${userChoice}, computer chose ${computerChoice}`);
+
+            winnerName.textContent = ''
+            playerMove.textContent = `${userChoice}`
+            computerMove.textContent = `${computerChoice}`;
+            
             singleRoundScore = playRound(computerChoice, userChoice);
             console.log(singleRoundScore);
 
@@ -214,17 +121,17 @@ function game()
             else if (singleRoundScore === 0)
             {
                 cScore++;
-                computerScore.textContent = `${cScore}`
+                computerScore.textContent = `${cScore}`;
                 console.log(`       Player score ${pScore}`);
                 console.log(`       Computer score ${cScore}`);
             }
             
             if (pScore === SCOREMAX)
             {
-                winnerName.textContent = "Player";
+                winnerName.textContent = "Human";
                 console.log("Human wins !");
-                pScore = 0;
-                cScore = 0;
+                // pScore = 0;
+                // cScore = 0;
                 playerScore.textContent = `${pScore}`;
                 computerScore.textContent = `${cScore}`
                 return 1;
@@ -233,16 +140,13 @@ function game()
             {
                 winnerName.textContent = "Computer";
                 console.log("Computer wins !");
-                pScore = 0;
-                cScore = 0;
+                // pScore = 0;
+                // cScore = 0;
                 playerScore.textContent = `${pScore}`;
                 computerScore.textContent = `${cScore}`
                 return 1;
             }
         });
-
-        // console.log(element.dataset.name);
-        // console.log(userPossibleChoices);
     })
 }
 
